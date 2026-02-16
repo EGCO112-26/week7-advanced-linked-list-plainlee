@@ -381,7 +381,7 @@ void printList( LLPtr currentPtr )
       
       // แสดงผลขาไป (Forward)
       while ( currentPtr != NULL ) {
-         printf( "%d %s --> ", currentPtr->id, currentPtr->name );
+         printf( "%d %s -->", currentPtr->id, currentPtr->name );
          lastPtr = currentPtr; 
          currentPtr = currentPtr->nextPtr;
       }
@@ -389,7 +389,7 @@ void printList( LLPtr currentPtr )
 
       // แสดงผลขากลับ (Backward)
       while ( lastPtr != NULL ) {
-          printf( "%d %s --> ", lastPtr->id, lastPtr->name );
+          printf( "%d %s -->", lastPtr->id, lastPtr->name );
           lastPtr = lastPtr->previousPtr;
       }
       puts( "NULL\n" );
