@@ -153,7 +153,7 @@ int main( void )
    char name[50];
    int status;
 
-   // ปิด Output Buffer เพื่อให้ระบบตรวจจับ Output ได้ทันที (ช่วยแก้ ENOBUFS)
+   // ปิด Output Buffer ช่วยเรื่อง ENOBUFS
    setbuf(stdout, NULL);
 
    instructions();

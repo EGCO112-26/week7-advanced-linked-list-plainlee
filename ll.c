@@ -270,6 +270,7 @@
 #include <string.h>
 #include "ll.h"
 
+// แก้ไข instructions ให้ถูกต้อง
 void instructions( void )
 {
    puts( "Enter your choice:\n"
@@ -386,7 +387,7 @@ void printList( LLPtr currentPtr )
       }
       puts( "NULL" );
 
-      // แสดงผลขากลับ (Backward) - ตาม Output ที่ต้องการ
+      // แสดงผลขากลับ (Backward)
       while ( lastPtr != NULL ) {
           printf( "%d %s --> ", lastPtr->id, lastPtr->name );
           lastPtr = lastPtr->previousPtr;
