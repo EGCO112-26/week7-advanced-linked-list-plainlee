@@ -153,11 +153,15 @@ int main( void )
    char name[50];
    int status;
 
+   // ปิด Output Buffer เพื่อให้ระบบตรวจจับ Output ได้ทันที (ช่วยแก้ ENOBUFS)
+   setbuf(stdout, NULL);
+
    instructions();
 
    while ( 1 ) {
       printf( "%s", "? " );
 
+      // 1. รับค่า Choice: ถ้าอ่านไม่สำเร็จ หรือเจอ EOF ให้จบโปรแกรมทันที
       status = scanf( "%u", &choice );
       if ( status == EOF || status != 1 ) break;
 
@@ -166,6 +170,8 @@ int main( void )
       switch ( choice ) {
          case 1:
             printf( "%s", "Enter id and name: " );
+            // 2. รับ id และ name พร้อมกัน
+            // ถ้าอ่านไม่ครบ 2 ค่า (เช่น ข้อมูลหมดกลางคัน) ให้จบโปรแกรมทันที
             if ( scanf( "%d %49s", &id, name ) != 2 ) goto end_run;
             
             insert( &startPtr, id, name );
@@ -175,6 +181,8 @@ int main( void )
          case 2:
             if ( !isEmpty( startPtr ) ) {
                printf( "%s", "Enter id to be deleted: " );
+               // 3. รับ id ที่จะลบ
+               // ถ้าอ่านไม่ได้ ให้จบโปรแกรมทันที
                if ( scanf( "%d", &id ) != 1 ) goto end_run;
 
                if ( deletes( &startPtr, id ) ) {
@@ -198,7 +206,6 @@ int main( void )
    }
 
 end_run:
-   // เปลี่ยนข้อความให้ตรงกับโจทย์ "Clear all nodes"
    puts( "Clear all nodes" );
    clearList( &startPtr );
    puts( "End of run." );

@@ -378,13 +378,15 @@ void printList( LLPtr currentPtr )
    else {
       puts( "The list is:" );
       
+      // แสดงผลขาไป (Forward)
       while ( currentPtr != NULL ) {
-         printf( "%d %s -->", currentPtr->id, currentPtr->name );
-         lastPtr = currentPtr;
+         printf( "%d %s --> ", currentPtr->id, currentPtr->name );
+         lastPtr = currentPtr; 
          currentPtr = currentPtr->nextPtr;
       }
       puts( "NULL" );
 
+      // แสดงผลขากลับ (Backward) - ตาม Output ที่ต้องการ
       while ( lastPtr != NULL ) {
           printf( "%d %s --> ", lastPtr->id, lastPtr->name );
           lastPtr = lastPtr->previousPtr;
