@@ -124,6 +124,147 @@
 // } // end function printList
 
 
+// #include <stdio.h>
+// #include <stdlib.h>
+// #include <string.h>
+// #include "ll.h"
+
+// void instructions( void )
+// {
+//    puts( "Enter your choice:\n"
+//          "   1 to insert an element into the list.\n"
+//          "   2 to delete an element from the list.\n"
+//          "   3 to end." );
+// }
+
+// void insert( LLPtr *sPtr, int id, char *name )
+// {
+//    LLPtr newPtr;
+//    LLPtr previousPtr;
+//    LLPtr currentPtr;
+
+//    newPtr = (LLPtr) malloc( sizeof( LLnode ) );
+
+//    if ( newPtr != NULL ) {
+//       newPtr->id = id;
+//       strcpy(newPtr->name, name);
+//       newPtr->nextPtr = NULL;
+//       newPtr->previousPtr = NULL;
+
+//       previousPtr = NULL;
+//       currentPtr = *sPtr;
+
+//       while ( currentPtr != NULL && id > currentPtr->id ) {
+//          previousPtr = currentPtr;
+//          currentPtr = currentPtr->nextPtr;
+//       }
+
+//       if ( previousPtr == NULL ) {
+//          newPtr->nextPtr = *sPtr;
+//          if( *sPtr != NULL ) {
+//             (*sPtr)->previousPtr = newPtr;
+//          }
+//          *sPtr = newPtr;
+//       }
+//       else {
+//          previousPtr->nextPtr = newPtr;
+//          newPtr->previousPtr = previousPtr;
+
+//          newPtr->nextPtr = currentPtr;
+//          if( currentPtr != NULL ) {
+//             currentPtr->previousPtr = newPtr;
+//          }
+//       }
+//    }
+//    else {
+//       printf( "%d not inserted. No memory available.\n", id );
+//    }
+// }
+
+// int deletes( LLPtr *sPtr, int id )
+// {
+//    LLPtr currentPtr;
+//    LLPtr tempPtr;
+
+//    if ( *sPtr != NULL && (*sPtr)->id == id ) {
+//       tempPtr = *sPtr;
+//       *sPtr = ( *sPtr )->nextPtr;
+
+//       if ( *sPtr != NULL ) {
+//           (*sPtr)->previousPtr = NULL;
+//       }
+
+//       free( tempPtr );
+//       return id;
+//    }
+//    else {
+//       currentPtr = *sPtr;
+
+//       while ( currentPtr != NULL && currentPtr->id != id ) {
+//          currentPtr = currentPtr->nextPtr;
+//       }
+
+//       if ( currentPtr != NULL ) {
+//          tempPtr = currentPtr;
+
+//          if(currentPtr->previousPtr != NULL) {
+//              currentPtr->previousPtr->nextPtr = currentPtr->nextPtr;
+//          }
+
+//          if(currentPtr->nextPtr != NULL) {
+//              currentPtr->nextPtr->previousPtr = currentPtr->previousPtr;
+//          }
+
+//          free( tempPtr );
+//          return id;
+//       }
+//    }
+//    return '\0';
+// }
+
+// int isEmpty( LLPtr sPtr )
+// {
+//    return sPtr == NULL;
+// }
+
+// void printList( LLPtr currentPtr )
+// {
+//    LLPtr lastPtr = NULL;
+
+//    if ( isEmpty( currentPtr ) ) {
+//       puts( "List is empty.\n" );
+//    }
+//    else {
+//       puts( "The list is:" );
+//       while ( currentPtr != NULL ) {
+//          printf( "%d %s --> ", currentPtr->id, currentPtr->name );
+//          lastPtr = currentPtr;
+//          currentPtr = currentPtr->nextPtr;
+//       }
+//       puts( "NULL" );
+
+//       while ( lastPtr != NULL ) {
+//           printf( "%d %s --> ", lastPtr->id, lastPtr->name );
+//           lastPtr = lastPtr->previousPtr;
+//       }
+//       puts( "NULL\n" );
+//    }
+// }
+
+// void clearList( LLPtr *sPtr )
+// {
+//     LLPtr currentPtr = *sPtr;
+//     LLPtr tempPtr;
+
+//     while ( currentPtr != NULL ) {
+//         tempPtr = currentPtr;
+//         printf("delete %d\n", currentPtr->id);
+//         currentPtr = currentPtr->nextPtr;
+//         free( tempPtr );
+//     }
+//     *sPtr = NULL;
+// }
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
