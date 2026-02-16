@@ -377,8 +377,9 @@ void printList( LLPtr currentPtr )
    }
    else {
       puts( "The list is:" );
+      
       while ( currentPtr != NULL ) {
-         printf( "%d %s --> ", currentPtr->id, currentPtr->name );
+         printf( "%d %s -->", currentPtr->id, currentPtr->name );
          lastPtr = currentPtr;
          currentPtr = currentPtr->nextPtr;
       }
@@ -399,7 +400,7 @@ void clearList( LLPtr *sPtr )
 
     while ( currentPtr != NULL ) {
         tempPtr = currentPtr;
-        printf("delete %d\n", currentPtr->id);
+        printf("delete %d\n", currentPtr->id); 
         currentPtr = currentPtr->nextPtr;
         free( tempPtr );
     }

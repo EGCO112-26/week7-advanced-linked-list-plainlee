@@ -151,24 +151,23 @@ int main( void )
    unsigned int choice;
    int id;
    char name[50];
+   int status;
 
    instructions();
 
    while ( 1 ) {
       printf( "%s", "? " );
-      
-      // รับ Choice: ถ้าอ่านไม่สำเร็จ หรือจบไฟล์ (EOF) ให้จบโปรแกรมทันที
-      if ( scanf( "%u", &choice ) != 1 ) break;
+
+      status = scanf( "%u", &choice );
+      if ( status == EOF || status != 1 ) break;
 
       if ( choice == 3 ) break;
 
       switch ( choice ) {
          case 1:
             printf( "%s", "Enter id and name: " );
-            // รับ id และ name พร้อมกัน (เช่น 123 Somchai)
-            // ถ้าอ่านไม่ได้ครบ 2 ตัว ให้จบโปรแกรมทันที (ป้องกัน Loop)
-            if ( scanf( "%d %49s", &id, name ) != 2 ) goto end_of_run;
-
+            if ( scanf( "%d %49s", &id, name ) != 2 ) goto end_run;
+            
             insert( &startPtr, id, name );
             printList( startPtr );
             break;
@@ -176,8 +175,7 @@ int main( void )
          case 2:
             if ( !isEmpty( startPtr ) ) {
                printf( "%s", "Enter id to be deleted: " );
-               // รับ id ที่จะลบ ถ้าอ่านไม่ได้ ให้จบโปรแกรม
-               if ( scanf( "%d", &id ) != 1 ) goto end_of_run;
+               if ( scanf( "%d", &id ) != 1 ) goto end_run;
 
                if ( deletes( &startPtr, id ) ) {
                   printf( "id %d deleted.\n", id );
@@ -199,7 +197,8 @@ int main( void )
       }
    }
 
-end_of_run:
+end_run:
+   // เปลี่ยนข้อความให้ตรงกับโจทย์ "Clear all nodes"
    puts( "Clear all nodes" );
    clearList( &startPtr );
    puts( "End of run." );
